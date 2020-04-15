@@ -5,7 +5,7 @@
 <script>
   import SingleCompany from '~/components/company/companySingle'
   export default {
-    name: 'singleCompany',
+    name: 'company',
     components: {
       SingleCompany
     }

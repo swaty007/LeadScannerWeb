@@ -31,6 +31,7 @@
                         <p v-if="value" class="black--text"><strong>{{ key }}:</strong> {{ value }}</p>
                     </template>
                     </div>
+                    <v-btn :to="{ name: `company-id`, params: { id: item.EDRPOU } }" class="deep-purple accent-4 white--text">Перейти</v-btn>
                 </v-list-item-content>
             </v-list-item>
         </v-card>
