@@ -31,7 +31,7 @@
         </v-navigation-drawer>
         <v-content>
             <v-container
-                    class="fill-height"
+                    class=".fill-height text-left"
                     fluid>
                 <v-row
                         align="center"

@@ -1,37 +1,33 @@
 <template>
-    <v-hover v-slot:default="{ hover }">
-    <v-card
-            :hover="true"
-            :light="true"
-            :outlined="true"
-            :elevation="hover ? 12 : 2"
-            class="text-left mb-12 pa-3 transition-swing">
-        <v-list-item>
-            <v-list-item-content>
-                <div v-for="(value, key, index) in item" v-if="value" :key="index" class="mb-5">
-                    <template v-if="typeof (value) === 'object'">
-                        <p v-if="value" class="black--text"><strong>{{ key }}</strong></p>
-                        <div v-for="(val, k, ind) in value" :key="ind" class="black--text">
-                            <template v-if="typeof (val) === 'object'">
-                                <div v-for="(val2, k2, ind2) in val" :key="ind2" class="black--text mb-0">
-                                    <strong>{{ k2 }}</strong> {{ val2 }}
-                                </div>
-                            </template>
-                            <template v-else-if="val"><strong>{{ k }}:</strong> {{ val }}</template>
-                        </div>
-                    </template>
-                    <template v-else>
-                        <p v-if="value" class="black--text"><strong>{{ key }}:</strong> {{ value }}</p>
-                    </template>
-                </div>
-            </v-list-item-content>
-        </v-list-item>
-    </v-card>
-    </v-hover>
+    <v-col
+            cols="12"
+            md="12">
+        <v-btn
+                class="deep-purple accent-4 white--text mb-4 ml-6"
+                :left="true"
+                :top="true"
+                @click="back">Назад
+        </v-btn>
+        <v-hover v-slot:default="{ hover }">
+            <v-card
+                    :hover="true"
+                    :light="true"
+                    :outlined="true"
+                    :elevation="hover ? 12 : 2"
+                    class="text-left mb-12 pa-3 transition-swing">
+                <CompanyListItem :item="item" :btn="false"/>
+            </v-card>
+        </v-hover>
+    </v-col>
 </template>
 <script>
   import { mapActions } from 'vuex'
+  import CompanyListItem from '~/components/company/companyListItem'
+
   export default {
+    components: {
+      CompanyListItem
+    },
     data () {
       return {
         id: this.$route.params.id,
@@ -47,7 +43,14 @@
       })
     },
     methods: {
-      ...mapActions('company', ['getCompany'])
+      ...mapActions('company', ['getCompany']),
+      back () {
+        if (window.history.length > 1) {
+          this.$router.go(-1)
+        } else {
+          this.$router.push({ path: '/' })
+        }
+      }
     }
   }
 </script>
