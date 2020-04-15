@@ -1,4 +1,5 @@
 <template>
+    <v-hover v-slot:default="{ hover }">
     <v-card
             :hover="true"
             :light="true"
@@ -12,7 +13,7 @@
                         <p v-if="value" class="black--text"><strong>{{ key }}</strong></p>
                         <div v-for="(val, k, ind) in value" :key="ind" class="black--text">
                             <template v-if="typeof (val) === 'object'">
-                                <div v-for="(val2, k2, ind2) in val" :key="ind2" class="black--text mb-2">
+                                <div v-for="(val2, k2, ind2) in val" :key="ind2" class="black--text mb-0">
                                     <strong>{{ k2 }}</strong> {{ val2 }}
                                 </div>
                             </template>
@@ -26,6 +27,7 @@
             </v-list-item-content>
         </v-list-item>
     </v-card>
+    </v-hover>
 </template>
 <script>
   import { mapActions } from 'vuex'

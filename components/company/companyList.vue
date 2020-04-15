@@ -17,11 +17,11 @@
                 <v-list-item-content>
                     <div v-for="(value, key, index) in item" v-if="value" :key="index" class="mb-5">
                     <template v-if="typeof (value) === 'object'">
-                        <p v-if="value" class="black--text"><strong>{{ key }}</strong></p>
+                        <p v-if="value" class="black--text"><strong>{{ key }}:</strong></p>
                         <div v-for="(val, k, ind) in value" :key="ind" class="black--text">
                             <template v-if="typeof (val) === 'object'">
-                                <div v-for="(val2, k2, ind2) in val" :key="ind2" class="black--text mb-2">
-                                    <strong>{{ k2 }}</strong> {{ val2 }}
+                                <div v-for="(val2, k2, ind2) in val" :key="ind2" class="black--text mb-0">
+                                    <strong>{{ k2 }}:</strong> {{ val2 }}
                                 </div>
                             </template>
                             <template v-else-if="val"><strong>{{ k }}:</strong> {{ val }}</template>
@@ -56,14 +56,15 @@
   export default {
     data () {
       return {
-        items: null
+        items: null,
+        page: 1
       }
     },
     computed: {
       // ...mapGetters('user', ['getCurrentUser', 'isCandidate', 'isRecruiter'])
     },
     created () {
-      this.getCompanyList().then((data) => {
+      this.getCompanyList({ page: this.page }).then((data) => {
         console.log(data)
         this.items = data.Items
       })
@@ -71,16 +72,16 @@
     methods: {
       ...mapActions('company', ['getCompanyList']),
       infiniteHandler ($state) {
-        // this.params.pagination.page += 1
-        // this.getResumeList(this.params)
-        //   .then(({ items }) => {
-        //     if (items.length) {
-        //       this.items.push(...items)
-        //       $state.loaded()
-        //     } else {
-        //       $state.complete()
-        //     }
-        //   })
+        this.page += 1
+        this.getCompanyList({ page: this.page })
+          .then(({ Items }) => {
+            if (Items.length) {
+              this.items.push(...Items)
+              $state.loaded()
+            } else {
+              $state.complete()
+            }
+          })
       }
     }
   }
