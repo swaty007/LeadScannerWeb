@@ -33,13 +33,13 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/axios'
+    '~/plugins/axios',
     // '~/plugins/vuelidate',
     // { src: '~/plugins/vue-google-auth.js', ssr: false },
     // { src: '~/plugins/fb-sdk.js', ssr: false },
     // { src: '~/plugins/vue2-editor.js', ssr: false },
     // { src: '~/plugins/socket', ssr: false },
-    // { src: '~/plugins/vue-infinite-loading', ssr: false },
+    { src: '~/plugins/vue-infinite-loading', ssr: false },
     // { src: '~/plugins/vue-notification' },
     // { src: '~/plugins/vue-read-more', ssr: false },
     // { src: '~/plugins/vue-awesome-swiper' },
