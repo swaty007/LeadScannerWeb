@@ -15,7 +15,7 @@
                     :outlined="true"
                     :elevation="hover ? 12 : 2"
                     class="text-left mb-12 pa-3 transition-swing">
-                <CompanyListItem :item="item" :btn="false"/>
+                <CompanyListItem :item="item" :btn="false" :extended="true"/>
             </v-card>
         </v-hover>
     </v-col>

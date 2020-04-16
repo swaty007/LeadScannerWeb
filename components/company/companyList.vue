@@ -5,7 +5,7 @@
                 <v-col
                         cols="12"
                         md="4">
-                    <v-text-field label="ЕДРПОУ" outlined/>
+                    <v-text-field label="ЕДРПОУ" outlined @change="change"/>
                 </v-col>
                 <v-col
                         cols="12"
@@ -30,7 +30,8 @@
                         v-for="(item, i) in items"
                         :key="i"
                         cols="12"
-                        md="6">
+                        md="6"
+                        class="mb-0">
                     <v-hover
                             v-slot:default="{ hover }">
                         <v-card
@@ -38,7 +39,7 @@
                                 :light="true"
                                 :outlined="true"
                                 :elevation="hover ? 12 : 2"
-                                class="text-left ma-0 mb-12 pa-3 transition-swing">
+                                class="text-left ma-0 pa-3 transition-swing fill-height">
                             <CompanyListItem :item="item" :btn="true"/>
                         </v-card>
                     </v-hover>
@@ -69,23 +70,33 @@
     data () {
       return {
         items: null,
-        page: 1
+        filter: {
+          filter: {
+            EDRPOU: '33123123|3213123123',
+            STATUTE: 5,
+            ADDRESS: 6,
+          },
+          page: 1
+        }
       }
     },
     computed: {
       // ...mapGetters('user', ['getCurrentUser', 'isCandidate', 'isRecruiter'])
     },
     created () {
-      this.getCompanyList({ page: this.page }).then((data) => {
+      this.getCompanyList(this.filter).then((data) => {
         console.log(data)
         this.items = data.Items
       })
     },
     methods: {
       ...mapActions('company', ['getCompanyList']),
+      change () {
+        // console.log(1)
+      },
       infiniteHandler ($state) {
-        this.page += 1
-        this.getCompanyList({ page: this.page })
+        this.filter.page += 1
+        this.getCompanyList(this.filter)
           .then(({ Items }) => {
             if (Items.length) {
               this.items.push(...Items)
