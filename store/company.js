@@ -3,7 +3,7 @@ import ApiService from '../services/api'
 export const actions = {
   getCompanyList (context, params) {
     return new Promise((resolve, reject) => {
-      ApiService.get('/lead', params)
+      ApiService.get('/leadlist', params)
         .then((response) => {
           resolve(response)
         })
