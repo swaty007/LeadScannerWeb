@@ -37,10 +37,15 @@
     computed: {
       // ...mapGetters('user', ['getCurrentUser', 'isCandidate', 'isRecruiter'])
     },
-    created () {
-      this.getCompany(this.$route.params.id).then((data) => {
+    async fetch () {
+      await this.getCompany(this.$route.params.id).then((data) => {
         this.item = data
       })
+    },
+    created () {
+      // this.getCompany(this.$route.params.id).then((data) => {
+      //   this.item = data
+      // })
     },
     methods: {
       ...mapActions('company', ['getCompany']),
