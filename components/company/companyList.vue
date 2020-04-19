@@ -4,29 +4,31 @@
             <v-row>
                 <v-col
                         v-for="input in filterList"
-                        v-if="input.type === 'input'"
-                        :key="input.name"
-                        cols="12"
-                        md="4">
+                        v-if="input.Type === 'TextBox'"
+                        :key="input.Nane"
+                        cols="6"
+                        md="3">
                     <v-text-field
                             v-model="input.value"
-                            :label="input.name"
+                            :label="input.Nane"
                             outlined
+                            dense
                             @change="change"/>
                 </v-col>
                 <v-col
                         v-for="select in filterList"
-                        v-if="select.type === 'select'"
-                        :key="select.name"
-                        cols="12"
-                        md="4">
-                    <v-select
+                        v-if="select.Type === 'Combobox'"
+                        :key="select.Nane"
+                        cols="6"
+                        md="3">
+                    <v-autocomplete
                             v-model="select.value"
-                            :label="select.name"
+                            :label="select.Nane"
                             :items="select.data"
                             :loading="!select.data.length"
                             outlined
                             clearable
+                            dense
                             @change="change"/>
                 </v-col>
             </v-row>
@@ -79,6 +81,7 @@
 </template>
 <script>
   import { mapActions } from 'vuex'
+  import { mapCacheActions } from 'vuex-cache'
   import CompanyListItem from '~/components/company/companyListItem'
 
   export default {
@@ -88,7 +91,7 @@
     data () {
       return {
         items: null,
-        filterList: [
+        filterList1: [
           { name: 'NAME', type: 'input', data: [], value: '', key: 0 },
           { name: 'SHORT_NAME', type: '', data: [], value: '', key: 1 },
           { name: 'OPF', type: 'select', data: [], value: null, key: 2 },
@@ -107,6 +110,7 @@
           { name: 'VP_DATES', type: '', data: [], value: '', key: 15 },
           { name: 'CURRENT_AUTHORITY', type: '', data: [], value: '', key: 16 },
         ],
+        filterList: [],
         filter: {
           page: 1,
         },
@@ -132,17 +136,21 @@
     },
     created () {
       this.loadList()
-      this.filterList.forEach((filter, index) => {
-        if (filter.type === 'select') {
-          this.getFilter(filter.name).then((data) => {
-            this.filterList[index].data = data
+      this.getFilters()
+        .then((data) => {
+          this.filterList = data.map( i => ({ ...i, data: [] }))
+          this.filterList.forEach((filter, index) => {
+            if (filter.Type === 'Combobox') {
+              this.getFilter(filter.Nane).then((data) => {
+                this.filterList[index].data = data
+              })
+            }
           })
-        }
-      })
+        })
     },
     methods: {
       ...mapActions('company', ['getCompanyList']),
-      ...mapActions('filter', ['getFilter']),
+      ...mapCacheActions('filter', ['getFilter', 'getFilters']),
       change () {
         this.filter.page = 1
         this.loadList()

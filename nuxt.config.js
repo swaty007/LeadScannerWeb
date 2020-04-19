@@ -71,6 +71,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
+    // analyze: true,
     extend (config, { isDev, isClient }) {
       config.module.rules.push({
         enforce: 'pre',

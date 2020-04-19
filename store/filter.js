@@ -11,5 +11,16 @@ export const actions = {
           reject(error)
         })
     })
+  },
+  getFilters (context) {
+    return new Promise((resolve, reject) => {
+      ApiService.get(`/filter`)
+        .then((response) => {
+          resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
   }
 }
