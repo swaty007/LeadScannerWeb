@@ -34,6 +34,13 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
+            <template v-slot:append>
+                <div class="pa-2">
+                    <v-btn block @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+                        <v-icon dark>mdi-brightness-4</v-icon>
+                    </v-btn>
+                </div>
+            </template>
         </v-navigation-drawer>
         <v-content>
             <v-container
