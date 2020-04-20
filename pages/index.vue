@@ -22,7 +22,7 @@
       drawer: null
     }),
     created () {
-      this.$vuetify.theme.dark = true
+      // this.$vuetify.theme.dark = true
     }
   }
 </script>
