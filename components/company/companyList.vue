@@ -125,7 +125,7 @@
         for (let prop of this.filterList) {
           if (prop.value) {
             filterArr[count] = {}
-            filterArr[count][0] = prop.name
+            filterArr[count][0] = prop.Nane
             filterArr[count][1] = prop.value
             count++
           }
