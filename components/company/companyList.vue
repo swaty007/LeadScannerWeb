@@ -51,12 +51,12 @@
                         :key="i"
                         cols="12"
                         md="6"
+                        lg="4"
                         class="mb-0">
                     <v-hover
                             v-slot:default="{ hover }">
                         <v-card
                                 :hover="true"
-                                :light="true"
                                 :outlined="true"
                                 :elevation="hover ? 12 : 2"
                                 class="text-left ma-0 pa-3 transition-swing fill-height">

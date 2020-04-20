@@ -5,9 +5,9 @@
                 <template v-if="typeof (value) === 'object'">
                     <template v-if="extended">
                         <p v-if="value" class="black--text body-2 mb-0"><strong>{{ key }}:</strong></p>
-                        <div v-for="(val, k, ind) in value" :key="ind" class="black--text">
+                        <div v-for="(val, k, ind) in value" :key="ind" class="">
                             <div v-if="typeof (val) === 'object'" class="mb-1">
-                                <div v-for="(val2, k2, ind2) in val" :key="ind2" class="black--text mb-0 caption ml-5">
+                                <div v-for="(val2, k2, ind2) in val" :key="ind2" class="mb-0 caption ml-5">
                                     <strong>{{ k2 }}</strong> {{ val2 }}
                                 </div>
                             </div>
@@ -16,7 +16,7 @@
                     </template>
                 </template>
                 <template v-else>
-                    <p v-if="value" class="black--text body-2"><strong>{{ key }}:</strong> <span class="body-2">{{ value }}</span></p>
+                    <p v-if="value" class="body-2"><strong>{{ key }}:</strong> <span class="body-2">{{ value }}</span></p>
                 </template>
             </div>
             <v-btn v-if="btn" :to="{ name: `company-id`, params: { id: item.EDRPOU } }" class="deep-purple accent-4 white--text">Перейти</v-btn>
