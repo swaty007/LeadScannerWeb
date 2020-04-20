@@ -1,5 +1,7 @@
 <template>
-    <v-list-item>
+    <v-list-item
+            align="bottom"
+            class="fill-height pb-12">
         <v-list-item-content>
             <div v-for="(value, key, index) in item" v-if="value" :key="index" class="mb-0">
                 <template v-if="typeof (value) === 'object'">
@@ -16,10 +18,18 @@
                     </template>
                 </template>
                 <template v-else>
-                    <p v-if="value" class="body-2"><strong>{{ key }}:</strong> <span class="body-2">{{ value }}</span></p>
+                    <p v-if="value" class="body-2"><strong>{{ key }}:</strong> <span class="body-2">{{ value }}</span>
+                    </p>
                 </template>
             </div>
-            <v-btn v-if="btn" :to="{ name: `company-id`, params: { id: item.EDRPOU } }" class="deep-purple accent-4 white--text">Перейти</v-btn>
+            <v-btn
+                    v-if="btn"
+                    :to="{ name: `company-id`, params: { id: item.EDRPOU } }"
+                    :bottom="true"
+                    :absolute="true"
+                    :direction="center"
+                    class="deep-purple accent-4 white--text my__btn">Перейти
+            </v-btn>
         </v-list-item-content>
     </v-list-item>
 </template>
@@ -42,3 +52,9 @@
     }
   }
 </script>
+<style scoped>
+    .my__btn {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
