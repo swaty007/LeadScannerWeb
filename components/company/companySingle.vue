@@ -37,6 +37,14 @@
     computed: {
       // ...mapGetters('user', ['getCurrentUser', 'isCandidate', 'isRecruiter'])
     },
+    head () {
+      return {
+        title: this.item.NAME,
+        meta: [
+          { hid: 'description', name: 'description', content: this.item.ADDRESS }
+        ]
+      }
+    },
     async fetch () {
       await this.getCompany(this.$route.params.id).then((data) => {
         this.item = data

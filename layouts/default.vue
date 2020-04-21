@@ -5,11 +5,11 @@
                 clipped-left>
             <v-app-bar-nav-icon @click="drawer = !drawer" />
             <span class="title ml-3 mr-5">Lead <span class="font-weight-light">Scanner</span></span>
-<!--            <v-text-field-->
-<!--                    solo-inverted-->
-<!--                    flat-->
-<!--                    hide-details-->
-<!--                    label="Search"/>-->
+            <v-text-field
+                    solo-inverted
+                    flat
+                    hide-details
+                    label="Search"/>
             <v-spacer />
         </v-app-bar>
         <v-navigation-drawer
