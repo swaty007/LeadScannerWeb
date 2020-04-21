@@ -27,7 +27,7 @@
                     :to="{ name: `company-id`, params: { id: item.EDRPOU } }"
                     :bottom="true"
                     :absolute="true"
-                    :direction="center"
+                    direction="center"
                     class="deep-purple accent-4 white--text my__btn">Перейти
             </v-btn>
         </v-list-item-content>
