@@ -31,7 +31,7 @@
     data () {
       return {
         id: this.$route.params.id,
-        item: null
+        item: null,
       }
     },
     computed: {
@@ -42,7 +42,7 @@
         title: this.item.NAME,
         meta: [
           { hid: 'description', name: 'description', content: this.item.ADDRESS }
-        ]
+        ],
       }
     },
     async fetch () {

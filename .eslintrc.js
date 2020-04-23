@@ -34,6 +34,13 @@ module.exports = {
     'indent': 0, // Enforce consistent indentation
     'no-plusplus': 'off', // Disallow the unary operators ++ and --
     'arrow-body-style': ["error", "as-needed"], // Require braces in arrow function body
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "never",
+      "exports": "never",
+      "functions": "always-multiline"
+    }],
     "vue/html-self-closing": ["error", { // This rule aims to enforce the self-closing sign as the configured style
       "html": {
         "void": "never",
