@@ -37,24 +37,22 @@
     computed: {
       // ...mapGetters('user', ['getCurrentUser', 'isCandidate', 'isRecruiter'])
     },
+    async fetch () {
+      this.item = await this.getCompany(this.$route.params.id)
+    },
     head () {
       return {
-        title: this.item.NAME,
+        title: this.item ? this.item.NAME : '',
         meta: [
-          { hid: 'description', name: 'description', content: this.item.ADDRESS }
+          { hid: 'description', name: 'description', content: this.item ? this.item.ADDRESS : '' },
         ],
       }
     },
-    async fetch () {
-      await this.getCompany(this.$route.params.id).then((data) => {
-        this.item = data
-      })
-    },
-    created () {
-      // this.getCompany(this.$route.params.id).then((data) => {
-      //   this.item = data
-      // })
-    },
+    // created () {
+    //   this.getCompany(this.$route.params.id).then((data) => {
+    //     this.item = data
+    //   })
+    // },
     methods: {
       ...mapActions('company', ['getCompany']),
       back () {

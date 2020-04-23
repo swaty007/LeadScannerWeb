@@ -59,7 +59,7 @@
                                 :hover="true"
                                 :outlined="true"
                                 :elevation="hover ? 12 : 2"
-                                class="text-left ma-0 pa-3 transition-swing fill-height">
+                                class="text-left ma-0 pb-0 pa-3 transition-swing fill-height">
                             <CompanyListItem :item="item" :btn="true"/>
                         </v-card>
                     </v-hover>

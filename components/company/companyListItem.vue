@@ -1,6 +1,5 @@
 <template>
   <v-list-item
-    align="bottom"
     class="fill-height pb-12">
     <v-list-item-content>
       <div v-for="(value, key, index) in item" v-if="value" :key="index" class="mb-0">
@@ -25,9 +24,10 @@
       <v-btn
         v-if="btn"
         :to="{ name: `company-id`, params: { id: item.EDRPOU } }"
-        :bottom="true"
-        :absolute="true"
         direction="center"
+        bottom
+        absolute
+        block
         class="deep-purple accent-4 white--text my__btn">Перейти
       </v-btn>
     </v-list-item-content>
@@ -54,7 +54,10 @@
 </script>
 <style scoped>
   .my__btn {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    /*transform: translateX(-50%);*/
+  }
+  .v-list-item__content {
+    align-self: start;
   }
 </style>
