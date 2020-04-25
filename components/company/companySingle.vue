@@ -26,7 +26,7 @@
 
   export default {
     components: {
-      CompanyListItem
+      CompanyListItem,
     },
     data () {
       return {
@@ -61,7 +61,7 @@
         } else {
           this.$router.push({ path: '/' })
         }
-      }
-    }
+      },
+    },
   }
 </script>

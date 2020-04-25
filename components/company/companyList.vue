@@ -10,7 +10,7 @@
                         md="3">
                     <v-text-field
                             v-model="input.value"
-                            :label="input.Nane"
+                            :label="input.Nane | nameKey(keys)"
                             outlined
                             dense
                             @change="change"/>
@@ -23,7 +23,7 @@
                         md="3">
                     <v-autocomplete
                             v-model="select.value"
-                            :label="select.Nane"
+                            :label="select.Nane | nameKey(keys)"
                             :items="select.data"
                             :loading="!select.data.length"
                             outlined
@@ -51,7 +51,8 @@
                         :key="i"
                         cols="12"
                         md="6"
-                        lg="4"
+                        lg="6"
+                        xl="4"
                         class="mb-0">
                     <v-hover
                             v-slot:default="{ hover }">
@@ -83,33 +84,18 @@
   import { mapActions } from 'vuex'
   import { mapCacheActions } from 'vuex-cache'
   import CompanyListItem from '~/components/company/companyListItem'
+  import keysTranslate from '~/mixins/keysTranslate'
 
   export default {
     components: {
-      CompanyListItem
+      CompanyListItem,
     },
+    mixins: [
+      keysTranslate,
+    ],
     data () {
       return {
         items: null,
-        filterList1: [
-          { name: 'NAME', type: 'input', data: [], value: '', key: 0 },
-          { name: 'SHORT_NAME', type: '', data: [], value: '', key: 1 },
-          { name: 'OPF', type: 'select', data: [], value: null, key: 2 },
-          { name: 'EDRPOU', type: 'input', data: [], value: '', key: 3 },
-          { name: 'ADDRESS', type: 'input', data: [], value: '', key: 4 },
-          { name: 'STAN', type: 'select', data: [], value: null, key: 5 },
-          { name: 'FOUNDING_DOCUMENT_NUM', type: '', data: [], value: '', key: 6 },
-          { name: 'SUPERIOR_MANAGEMENT', type: '', data: [], value: '', key: 7 },
-          { name: 'AUTHORIZED_CAPITAL', type: '', data: [], value: '', key: 8 },
-          { name: 'STATUTE', type: 'select', data: [], value: null, key: 9 },
-          { name: 'REGISTRATION', type: 'input', data: [], value: '', key: 10 },
-          { name: 'MANAGING_PAPER', type: '', data: [], value: '', key: 11 },
-          { name: 'TERMINATED_INFO', type: '', data: [], value: '', key: 12 },
-          { name: 'TERMINATION_CANCEL_INFO', type: '', data: [], value: '', key: 13 },
-          { name: 'CONTACTS', type: '', data: [], value: '', key: 14 },
-          { name: 'VP_DATES', type: '', data: [], value: '', key: 15 },
-          { name: 'CURRENT_AUTHORITY', type: '', data: [], value: '', key: 16 },
-        ],
         filterList: [],
         filter: {
           page: 1,
@@ -131,7 +117,7 @@
           }
         }
         return { ...this.filter, filter: filterArr }
-      }
+      },
       // ...mapGetters('user', ['getCurrentUser', 'isCandidate', 'isRecruiter'])
     },
     created () {
