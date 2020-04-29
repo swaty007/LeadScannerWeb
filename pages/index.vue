@@ -8,21 +8,21 @@
   export default {
     name: 'index',
     components: {
-      CompanyList
+      CompanyList,
     },
     head () {
       return {
         title: 'Lead Scanner',
         meta: [
-          { hid: 'description', name: 'description', content: '' }
-        ]
+          { hid: 'description', name: 'description', content: '' },
+        ],
       }
     },
     data: () => ({
-      drawer: null
+      drawer: null,
     }),
     created () {
       // this.$vuetify.theme.dark = true
-    }
+    },
   }
 </script>

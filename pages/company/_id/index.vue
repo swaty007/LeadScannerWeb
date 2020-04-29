@@ -7,8 +7,8 @@
   export default {
     name: 'company',
     components: {
-      SingleCompany
-    }
+      SingleCompany,
+    },
   }
 </script>
 

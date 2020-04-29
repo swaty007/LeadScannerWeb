@@ -63,12 +63,12 @@
     components: {},
     data () {
       return {
-        drawer: null
+        drawer: null,
       }
     },
     created () {
       // this.$vuetify.theme.dark = true
-    }
+    },
   }
 </script>
 <style>

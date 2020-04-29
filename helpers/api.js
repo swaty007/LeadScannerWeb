@@ -9,12 +9,12 @@ function convertBooleanToInt (prefix, value) {
 export function paramsSerializerQs (params) {
   return qs.stringify(params, {
     arrayFormat: 'brackets',
-    filter: convertBooleanToInt
+    filter: convertBooleanToInt,
   })
 }
 export function paramsSerializer (params) {
   return JSON.stringify(params, {
-    filter: convertBooleanToInt
+    filter: convertBooleanToInt,
   })
 }
 

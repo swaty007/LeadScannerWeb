@@ -4,7 +4,7 @@
             <v-row>
                 <v-col
                         v-for="input in filterList"
-                        v-if="input.Type === 'TextBox'"
+                        v-if="!input.Type"
                         :key="input.Nane"
                         cols="6"
                         md="3">
@@ -17,7 +17,7 @@
                 </v-col>
                 <v-col
                         v-for="select in filterList"
-                        v-if="select.Type === 'Combobox'"
+                        v-if="select.Type"
                         :key="select.Nane"
                         cols="6"
                         md="3">
@@ -101,7 +101,7 @@
           page: 1,
         },
         totalItems: null,
-        submitStatus: null
+        submitStatus: null,
       }
     },
     computed: {
@@ -126,7 +126,7 @@
         .then((data) => {
           this.filterList = data.map( i => ({ ...i, data: [] }))
           this.filterList.forEach((filter, index) => {
-            if (filter.Type === 'Combobox') {
+            if (filter.Type) {
               this.getFilter(filter.Nane).then((data) => {
                 this.filterList[index].data = data
               })
@@ -160,7 +160,7 @@
               $state.complete()
             }
           })
-      }
-    }
+      },
+    },
   }
 </script>

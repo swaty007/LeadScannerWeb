@@ -7,7 +7,7 @@ class ApiService {
     try {
       const response = await HTTP.get(URL + url, {
         params: prepareParams(params),
-        paramsSerializer: paramsSerializerQs
+        paramsSerializer: paramsSerializerQs,
       })
       return response.data
     } catch (error) {
@@ -18,7 +18,7 @@ class ApiService {
   static async getFile (url, params) {
     try {
       const response = await HTTP.get(URL + url, {
-        responseType: 'arraybuffer'
+        responseType: 'arraybuffer',
       })
       return response.data
     } catch (error) {
@@ -30,7 +30,7 @@ class ApiService {
     try {
       const response = await HTTP.post(URL + url, data, {
         transformRequest: [paramsSerializer],
-        ...config
+        ...config,
       })
       return response.data
     } catch (error) {
@@ -41,7 +41,7 @@ class ApiService {
   static async put (url, data) {
     try {
       const response = await HTTP.put(URL + url, data, {
-        transformRequest: [paramsSerializer]
+        transformRequest: [paramsSerializer],
       })
       return response.data
     } catch (error) {
@@ -52,7 +52,7 @@ class ApiService {
   static async delete (url, data) {
     try {
       const response = await HTTP.delete(URL + url, {
-        data
+        data,
       })
       return response.data
     } catch (error) {
@@ -73,8 +73,8 @@ class ApiService {
     try {
       const response = await HTTP.post(URL + url, data, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       })
       return response.data
     } catch (error) {
