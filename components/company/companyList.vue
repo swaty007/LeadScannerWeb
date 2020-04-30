@@ -5,12 +5,12 @@
                 <v-col
                         v-for="input in filterList"
                         v-if="!input.Type"
-                        :key="input.Nane"
+                        :key="input.Name"
                         cols="6"
                         md="3">
                     <v-text-field
                             v-model="input.value"
-                            :label="input.Nane | nameKey(keys)"
+                            :label="input.Name | nameKey(keys)"
                             outlined
                             dense
                             @change="change"/>
@@ -18,12 +18,12 @@
                 <v-col
                         v-for="select in filterList"
                         v-if="select.Type"
-                        :key="select.Nane"
+                        :key="select.Name"
                         cols="6"
                         md="3">
                     <v-autocomplete
                             v-model="select.value"
-                            :label="select.Nane | nameKey(keys)"
+                            :label="select.Name | nameKey(keys)"
                             :items="select.data"
                             :loading="!select.data.length"
                             outlined
@@ -111,7 +111,7 @@
         for (let prop of this.filterList) {
           if (prop.value) {
             filterArr[count] = {}
-            filterArr[count][0] = prop.Nane
+            filterArr[count][0] = prop.Name
             filterArr[count][1] = prop.value
             count++
           }
@@ -127,7 +127,7 @@
           this.filterList = data.map( i => ({ ...i, data: [] }))
           this.filterList.forEach((filter, index) => {
             if (filter.Type) {
-              this.getFilter(filter.Nane).then((data) => {
+              this.getFilter(filter.Name).then((data) => {
                 this.filterList[index].data = data
               })
             }
