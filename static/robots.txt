@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: */search
+
+User-agent: Yandex
+Allow: /
+Disallow: */search
+
+Host: http://leadscanner.com.ua/
+Sitemap: http://leadscanner.com.ua/sitemap.xml
+
+User-Agent: msnbot
+Crawl-delay: 2
+
+User-Agent: bingbot
+Crawl-delay: 2

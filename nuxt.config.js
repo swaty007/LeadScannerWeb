@@ -18,7 +18,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
   },
   /*
   ** Customize the progress bar color
@@ -62,7 +62,10 @@ module.exports = {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     // '@nuxtjs/eslint-module'
-    ['@nuxtjs/vuetify', { /* module options */ }]
+    ['@nuxtjs/vuetify', { /* module options */ }],
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-166092936-1',
+    }],
   ],
   /*
   ** Build configuration

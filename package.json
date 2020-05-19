@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.7",
+    "@nuxtjs/google-analytics": "^2.2.3",
     "nuxt": "^2.0.0",
     "vue-infinite-loading": "^2.4.5",
     "vuex-cache": "^3.1.1"

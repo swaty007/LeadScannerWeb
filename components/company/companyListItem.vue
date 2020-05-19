@@ -17,7 +17,9 @@
           </template>
         </template>
         <template v-else>
-          <p v-if="value" class="body-2"><strong>{{ key | nameKey(keys) }}:</strong> <span class="body-2">{{ value }}</span>
+          <template v-if="key === 'NAME' && extended"></template>
+          <p v-else-if="value" class="body-2">
+            <strong>{{ key | nameKey(keys) }}:</strong> <span class="body-2">{{ value }}</span>
           </p>
         </template>
       </div>

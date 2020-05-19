@@ -8,6 +8,9 @@
                 :top="true"
                 @click="back">Назад
         </v-btn>
+      <h1 v-if="item" class="body-1 ma-6">
+        <strong>{{ 'NAME' | nameKey(keys) }}:</strong> {{ item.NAME }}
+      </h1>
         <v-hover v-slot:default="{ hover }">
             <v-card
                     :hover="true"
@@ -23,11 +26,15 @@
 <script>
   import { mapActions } from 'vuex'
   import CompanyListItem from '~/components/company/companyListItem'
+  import keysTranslate from '~/mixins/keysTranslate'
 
   export default {
     components: {
       CompanyListItem,
     },
+    mixins: [
+      keysTranslate,
+    ],
     data () {
       return {
         id: this.$route.params.id,
@@ -41,10 +48,19 @@
       this.item = await this.getCompany(this.$route.params.id)
     },
     head () {
+      if (!this.item) {
+        return {
+          title: '',
+          meta: [
+            { hid: 'description', name: 'description', content: '' },
+          ],
+        }
+      }
       return {
-        title: this.item ? this.item.NAME : '',
+        title: (this.item.SHORT_NAME ? this.item.SHORT_NAME : this.item.NAME) +
+          `, офіційна інформація ✅ про юридичну особу ${this.item.EDRPOU} з ЄДР, Lead Scanner ✅`,
         meta: [
-          { hid: 'description', name: 'description', content: this.item ? this.item.ADDRESS : '' },
+          { hid: 'description', name: 'description', content: `Дані з ЄРД та контакти ${this.item.NAME}, зареєстрованної за адресою ${this.item.ADDRESS}` },
         ],
       }
     },
